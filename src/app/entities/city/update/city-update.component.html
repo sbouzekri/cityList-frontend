@@ -1,0 +1,52 @@
+<form (ngSubmit)="onCreateCity()" [formGroup]="form">
+  <div class="card box-primary">
+    <div class="card-header">
+      <div [hidden]="cityUpdated">
+        <h5>Add new City</h5>
+      </div>
+      <div [hidden]="!cityUpdated">
+        <h5>Update city</h5>
+      </div>
+    </div>
+    <div class="card-body ">
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <label class="control-label required" for="name">Name</label>
+          <input [ngClass]="displayFieldCss('name')" class="form-control" formControlName="name"
+                 id="name" name="name" placeholder="Raison sociale"
+                 type="text"/>
+          <div class="invalid-feedback">
+            <div>Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label class="control-label required" for="photo">Photo</label>
+          <input [ngClass]="displayFieldCss('photo')" class="form-control"
+                 formControlName="photo" id='photo'
+                 name="photo" placeholder="Photo"
+                 type="text"/>
+          <div class="invalid-feedback">
+            <div>Photo is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttonPanel row">
+    <div class="col-md-6">
+      <button class="btn btn-success" routerLink="/city" style="margin-right: 5px" type="button"><i
+        class="fa fa-backward" style="padding-right: 5px;"></i> Back
+      </button>
+    </div>
+    <div class="col-md-6 text-right">
+      <button [hidden]="!cityUpdated" class="btn btn-primary" style="margin-right: 5px"
+              type="submit">
+        <i class="fa fa-check" style="padding-right: 5px;"></i>
+        Update
+      </button>
+    </div>
+  </div>
+</form>
+

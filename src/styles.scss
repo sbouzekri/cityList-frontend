@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.imgCity {
+  width: 200px;
+  height: 200px;
+  margin-right: 50px;
+}
+
+.imgCity img {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  margin-right: 50px;
+}
+

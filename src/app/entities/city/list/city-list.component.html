@@ -1,0 +1,63 @@
+<div class="card box-primary">
+  <div class="card-header">
+    <h5> Search</h5>
+  </div>
+  <div class="card-body ">
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-sm-6">
+          <label for="label">Name</label>
+          <input type="text" class="form-control" [(ngModel)]="nameSearch"
+                 id="label" name="label"/>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="buttonPanel" align="right">
+  <button type="button" class="btn btn-info " (click)="loadData()">Search
+  </button>
+</div>
+<div class="card box-result">
+  <div class="card-header">
+    <h5> City List</h5>
+  </div>
+  <div class="card-body ">
+    <div style="margin-top: 30px;" [hidden]="dataSource.page?.totalElements !== 0">
+      No city found
+    </div>
+    <div style="margin-top: 30px;" [hidden]="dataSource.page?.totalElements === 0">
+      <mat-table #table [dataSource]="dataSource" matSort matSortDisableClear>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+          <mat-cell *matCellDef="let city">{{city.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="photo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Photo</mat-header-cell>
+          <mat-cell *matCellDef="let city">
+            <div class="imgCity"><img [src]="city.photo" class="card-img-bottom rounded-circle"/></div></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action" >
+          <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+          <mat-cell *matCellDef="let city">
+            <button class="btn btn-info"  value="edit" style="margin-right: 5px;" [routerLink]="['/city', city.id, 'edit']">
+             Edit
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let city; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+      <mat-paginator [length]="dataSource?.page?.totalElements" [pageSize]="20"
+                     [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons="true"></mat-paginator>
+    </div>
+  </div>
+</div>
