@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = true;
       this.loginSuccess = false;
       this.snackBar.open(this.errorMessage, 'Undo', {
-        duration: 3000
+        duration: 3000,
+        panelClass: ['mat-toolbar', 'mat-warn']
       });
     });
   }

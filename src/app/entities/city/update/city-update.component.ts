@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {City, ICity} from "../city.model";
 import {ActivatedRoute, Params, Router} from "@angular/router";
@@ -53,11 +53,16 @@ export class CityUpdateComponent implements OnInit {
         (res: ICity) => {
           this.city = res;
           this.snackBar.open('City updated with success!', 'Undo', {
-            duration: 3000
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-primary']
           });
         },
         error => {
           console.log(error);
+          this.snackBar.open("Unauthorized user!", 'Undo', {
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-warn']
+          });
         }
       );
     } else {

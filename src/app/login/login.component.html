@@ -1,19 +1,26 @@
-<div class="container col-lg-6">
-  <h1 class="text-center">Login</h1>
+<div class="container col-lg-6 mt-5">
+
   <div class="card">
+    <div class="card-header">
+      <h5 class="text-center">Login</h5>
+    </div>
     <div class="card-body">
       <form class="form-group">
         <div class="form-group">
-          <label for="username">User Name :</label>
-          <input [(ngModel)]="username" class="form-control" id="username" name="username" placeholder="Enter User Name"
+          <label for="username">Username :</label>
+          <input [(ngModel)]="username" class="form-control" id="username" name="username"
+                 placeholder="Enter your username"
                  type="text">
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input [(ngModel)]="password" class="form-control" id="password" name="password" placeholder="Enter password"
+          <input [(ngModel)]="password" class="form-control" id="password" name="password"
+                 placeholder="Enter your password"
                  type="password">
         </div>
-        <button (click)=login() class="btn btn-success">Login</button>
+        <div class="float-end pt-3">
+          <button (click)=login() class="btn btn-success">Login</button>
+        </div>
       </form>
     </div>
   </div>
