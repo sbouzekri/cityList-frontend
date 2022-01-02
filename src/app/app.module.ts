@@ -7,10 +7,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from "@angular/router";
 import {EntityModule} from "./entities/entity.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {LoginComponent} from './login/login.component';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     RouterModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
